@@ -20,6 +20,7 @@ public:
 
     int init();
     int enable();
+    int disable();
     void set_dir(int val);
     void step(unsigned long ms_delay);
     void make_steps(unsigned long count, unsigned long ms_delay);
@@ -33,14 +34,11 @@ class CLamellaSetter
 {
 public:
 
-    enum { STATE_MAINTENANCE = 0,   // обслуживание
-           STATE_GOTOMAINTENANCE,   // перейти в режим обслуживания
-           STATE_WAITING,       // ожидание клиента
-           STATE_WORKING,       // ожидание действий клиента
-           STATE_COOKING,       // приготовление
-           STATE_CHANGE_GIVING, // выдача сдачи
-           STATE_BYE,           // прощание
-           STATE_ERROR };
+    enum { STATE_ERROR = -1,    //
+           STATE_INIT = 0,      // поиск нуля
+           STATE_WAITING,       // ожидание действий пользователя
+           STATE_WORKING        // движение
+         };
 
     //CLamellaSetter( LiquidCrystalRus &lcd );
     CLamellaSetter();
@@ -48,6 +46,7 @@ public:
 
     int init();
     int enable();
+    int disable();
 
 public:
     // экран пользователя

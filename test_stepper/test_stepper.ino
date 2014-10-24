@@ -6,9 +6,13 @@
 
 #define SHOW_DEBUG_INFO 1
 
-const int PULSEPin  = 13;
-const int DIRpin    = 12;
-const int ENPin     = 11;
+#define STP_X_STP_PIN 12
+#define STP_X_DIR_PIN 11
+#define STP_X_ENA_PIN 10
+
+const int PULSEPin  = STP_X_STP_PIN;
+const int DIRpin    = STP_X_DIR_PIN;
+const int ENPin     = STP_X_ENA_PIN;
 
 void debug_info(const char *str)
 {

@@ -45,6 +45,6 @@ void loop()
     setter.stp_x.set_dir(HIGH);
     setter.stp_x.make_steps(200, 1);
 
-    setter.stp_x.set_dir(LOW);
+    //setter.stp_x.set_dir(LOW);
     setter.stp_x.make_steps(200, 1);
 }

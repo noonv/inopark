@@ -39,6 +39,12 @@ int CStepper::enable()
     return 0;
 }
 
+int CStepper::disable()
+{
+    digitalWrite(ena_pin, HIGH);
+    return 0;
+}
+
 void CStepper::set_dir(int val)
 {
     digitalWrite(dir_pin, val);
@@ -49,6 +55,7 @@ void CStepper::step(unsigned long ms_delay)
     digitalWrite(stp_pin, HIGH);
     delay(ms_delay);
     digitalWrite(stp_pin, LOW);
+    delay(ms_delay);
 }
 
 void CStepper::make_steps(unsigned long count, unsigned long ms_delay)
@@ -91,6 +98,13 @@ int CLamellaSetter::enable()
 {
     stp_x.enable();
     stp_y.enable();
+    return 0;
+}
+
+int CLamellaSetter::disable()
+{
+    stp_x.disable();
+    stp_y.disable();
     return 0;
 }
 
