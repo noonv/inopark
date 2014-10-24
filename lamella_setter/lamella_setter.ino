@@ -5,6 +5,9 @@
 //
 
 #include "setter.h"
+#include <LineDriver.h>
+#include <LiquidCrystalExt.h>
+#include <LiquidCrystalRus.h>
 
 Timings times;
 
@@ -12,9 +15,9 @@ Timings times;
 int led_pin = 13;
 #endif
 
-//LiquidCrystalRus lcd(8, 9, 10, 11, 12, 13);
+LiquidCrystalRus lcd(8, 9, 10, 11, 12, 13);
 
-CLamellaSetter setter;
+CLamellaSetter setter(lcd);
 
 void setup()
 {
@@ -27,7 +30,6 @@ void setup()
 #endif
 
     setter.init();
-    setter.enable();
 
     debug_info(F("[i] Start..."));
 }
@@ -42,9 +44,14 @@ void loop()
     }
 #endif
 
+#if 0
     setter.stp_x.set_dir(HIGH);
     setter.stp_x.make_steps(200, 1);
 
     //setter.stp_x.set_dir(LOW);
     setter.stp_x.make_steps(200, 1);
+#endif
+
+    setter.make();
+
 }

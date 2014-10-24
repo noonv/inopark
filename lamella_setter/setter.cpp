@@ -4,7 +4,8 @@
 
 #include "setter.h"
 
-CStepper::CStepper()
+CStepper::CStepper():
+    stp_pin(-1), dir_pin(-1), ena_pin(-1)
 {
 
 }
@@ -24,24 +25,32 @@ int CStepper::init()
 {
     pinMode(stp_pin, OUTPUT);
     pinMode(dir_pin, OUTPUT);
-    pinMode(ena_pin, OUTPUT);
+    if(ena_pin != -1) {
+        pinMode(ena_pin, OUTPUT);
+    }
 
     digitalWrite(stp_pin, LOW);
     digitalWrite(dir_pin, LOW);
-    digitalWrite(ena_pin, HIGH);
+    if(ena_pin != -1) {
+        digitalWrite(ena_pin, HIGH);
+    }
 
     return 0;
 }
 
 int CStepper::enable()
 {
-    digitalWrite(ena_pin, LOW);
+    if(ena_pin != -1) {
+        digitalWrite(ena_pin, LOW);
+    }
     return 0;
 }
 
 int CStepper::disable()
 {
-    digitalWrite(ena_pin, HIGH);
+    if(ena_pin != -1) {
+        digitalWrite(ena_pin, HIGH);
+    }
     return 0;
 }
 
@@ -67,8 +76,10 @@ void CStepper::make_steps(unsigned long count, unsigned long ms_delay)
 
 
 
-CLamellaSetter::CLamellaSetter()
+CLamellaSetter::CLamellaSetter(LiquidCrystalRus &_lcd):
+    lcd(_lcd)
 {
+    state = STATE_INIT;
 }
 
 CLamellaSetter::~CLamellaSetter()
@@ -82,11 +93,11 @@ int CLamellaSetter::init()
 
     stp_x.stp_pin = STP_X_STP_PIN;
     stp_x.dir_pin = STP_X_DIR_PIN;
-    stp_x.ena_pin = STP_X_ENA_PIN;
+    //stp_x.ena_pin = STP_X_ENA_PIN;
 
     stp_y.stp_pin = STP_Y_STP_PIN;
     stp_y.dir_pin = STP_Y_DIR_PIN;
-    stp_y.ena_pin = STP_Y_ENA_PIN;
+    //stp_y.ena_pin = STP_Y_ENA_PIN;
 
     stp_x.init();
     stp_y.init();
@@ -105,6 +116,26 @@ int CLamellaSetter::disable()
 {
     stp_x.disable();
     stp_y.disable();
+    return 0;
+}
+
+int CLamellaSetter::make()
+{
+#if SHOW_DEBUG_INFO
+    Serial.print(F("[i] Make state: "));
+    Serial.println(state);
+#endif
+
+    switch (state) {
+    case STATE_ERROR:
+        break;
+    case STATE_INIT:
+        break;
+    case STATE_WAITING:
+        break;
+    default:
+        break;
+    }
     return 0;
 }
 

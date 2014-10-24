@@ -8,6 +8,7 @@
 #include "definitions.h"
 #include "utils.h"
 
+#include <LineDriver.h>
 #include <LiquidCrystalExt.h>
 #include <LiquidCrystalRus.h>
 
@@ -33,24 +34,24 @@ public:
 class CLamellaSetter
 {
 public:
-
     enum { STATE_ERROR = -1,    //
            STATE_INIT = 0,      // поиск нуля
            STATE_WAITING,       // ожидание действий пользователя
            STATE_WORKING        // движение
          };
 
-    //CLamellaSetter( LiquidCrystalRus &lcd );
-    CLamellaSetter();
+    CLamellaSetter(LiquidCrystalRus &lcd);
     ~CLamellaSetter();
 
     int init();
     int enable();
     int disable();
 
+    int make();
+
 public:
     // экран пользователя
-    //LiquidCrystalRus &lcd;
+    LiquidCrystalRus &lcd;
 
     // текущее состояние автомата
     int state;
