@@ -27,6 +27,12 @@ void setup()
 
     setter.init();
 
+    pinMode(STATE_SWITCH_PIN, INPUT);
+    pinMode(STP_X_BUTTON_UP, INPUT);
+    pinMode(STP_X_BUTTON_DOWN, INPUT);
+    pinMode(STP_Y_BUTTON_UP, INPUT);
+    pinMode(STP_X_BUTTON_DOWN, INPUT);
+
     debug_info(F("[i] Start..."));
 }
 

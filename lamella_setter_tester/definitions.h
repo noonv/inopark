@@ -8,7 +8,7 @@
 #include "Arduino.h"
 
 // выводить в Serial отладочную информацию
-#define SHOW_DEBUG_INFO  1
+#define SHOW_DEBUG_INFO  0
 
 // для отладки
 #define USE_FOR_DEBUG 1
