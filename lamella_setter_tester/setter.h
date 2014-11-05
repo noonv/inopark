@@ -27,14 +27,15 @@ public:
     int ena_pin;
 };
 
+enum { STATE_ERROR = -1, //
+       STATE_STOP = 0,   // остановка
+       STATE_SLOW,       // медленный
+       STATE_FAST        // быстрый
+     };
+
 class CLamellaSetter
 {
 public:
-    enum { STATE_ERROR = -1, //
-           STATE_STOP = 0,   // остановка
-           STATE_SLOW,       // медленный
-           STATE_FAST        // быстрый
-         };
 
     CLamellaSetter();
     ~CLamellaSetter();

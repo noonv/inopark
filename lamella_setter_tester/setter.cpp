@@ -120,6 +120,7 @@ int CLamellaSetter::disable()
 
 int CLamellaSetter::make()
 {
+#if 0
 #if SHOW_DEBUG_INFO
     Serial.print(F("[i] Make state: "));
     Serial.println(state);
@@ -135,6 +136,8 @@ int CLamellaSetter::make()
     default:
         break;
     }
+#endif
+
     return 0;
 }
 

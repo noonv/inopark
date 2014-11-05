@@ -17,8 +17,6 @@
 #define LCD_WIDTH  16
 #define LCD_HEIGHT 2
 
-//LiquidCrystalRus lcd(8, 9, 10, 11, 12, 13);
-
 // пины управления шаговиками
 #define STP_X_STP_PIN 7
 #define STP_X_DIR_PIN 6
@@ -28,15 +26,17 @@
 #define STP_Y_DIR_PIN 4
 //#define STP_Y_ENA_PIN 7
 
-// пины концевиков
-#define END_X_PIN   A0
-#define END_Y_PIN   A1
-#define HOME_Y_PIN  A2
+//
+// органы управления
+//
+// переключатель режима работы
+#define STATE_SWITCH_PIN    12
+// кнопки
+#define STP_X_BUTTON_UP     11
+#define STP_X_BUTTON_DOWN   10
+#define STP_Y_BUTTON_UP     9
+#define STP_Y_BUTTON_DOWN   8
 
-// пины органов управления
-#define BUTTON_PIN      A3
-#define ENCODER1_PIN    A4
-#define ENCODER2_PIN    A5
 
 // для хранения счётчиков времени срабатывания процедур
 struct Timings
