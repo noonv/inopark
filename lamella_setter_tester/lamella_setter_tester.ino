@@ -59,7 +59,7 @@ void loop()
     }
     else {
         digitalWrite(led_pin, LOW);
-        stepper_count = 7;
+        stepper_count = 5;
         debug_info(F("[i] SLOW"));
     }
 
