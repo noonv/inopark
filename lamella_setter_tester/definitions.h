@@ -13,10 +13,6 @@
 // для отладки
 #define USE_FOR_DEBUG 1
 
-// параметры экранчика
-#define LCD_WIDTH  16
-#define LCD_HEIGHT 2
-
 // пины управления шаговиками
 #define STP_X_STP_PIN 7
 #define STP_X_DIR_PIN 6
